@@ -10,7 +10,6 @@ function App() {
 
       <Menu/>      
       <h1>H1</h1>
-     
     
 
     </div>
