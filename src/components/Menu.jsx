@@ -1,15 +1,54 @@
 import React from 'react'
+import { Card, Carousel, Container, Nav, Navbar, Row } from 'react-bootstrap'
 
 const Menu = () => {
   return (
     <div>
-        <h1>Teste</h1>
-        <ul>
-            <li><a href="">Página 1</a></li>
-            <li><a href="">Página 2</a></li>
-            <li><a href="">Página 3</a></li>
-            <li><a href="">Página 4</a></li>
-        </ul>
+      
+
+        <Navbar bg="dark" variant="dark">
+          <Container>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+          </Container>
+        </Navbar>
+
+        <br />
+
+        <Container className="justify-content-center" style={{  }}>
+        <Carousel variant="white">
+          <Carousel.Item>
+            <img style={{ width: '500px' }}
+              className="d-block w-100"
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img style={{ width: '500px' }}
+              className="d-block w-100 mb-100"
+              src="https://images.unsplash.com/photo-1564865878688-9a244444042a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
+              alt="Third slide"
+            />
+            <Carousel.Caption>
+              <h5>Third slide label</h5>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+        <br />
+
+
+        </Container>
 
     </div>
   )
