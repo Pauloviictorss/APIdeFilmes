@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Carousel, Container, Nav, Navbar, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Menu = () => {
   return (
@@ -8,11 +9,13 @@ const Menu = () => {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/objeto">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+
+            <Link className="nav-link" to="/carros">Carros</Link>
+            <Link className="nav-link" to="/array">Array</Link>
+            <Link className="nav-link" to="/objeto">Lugares</Link>
+
           </Nav>
           </Container>
         </Navbar>
@@ -22,7 +25,7 @@ const Menu = () => {
         <Container className="justify-content-center" style={{  }}>
         <Carousel variant="white">
           <Carousel.Item>
-            <img style={{ width: '500px' }}
+            <img style={{ width: '100%' }}
               className="d-block w-100"
               src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
               alt="First slide"
@@ -33,8 +36,8 @@ const Menu = () => {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img style={{ width: '500px' }}
-              className="d-block w-100 mb-100"
+            <img style={{ width: '100%' }}
+              className="d-block w-100"
               src="https://images.unsplash.com/photo-1564865878688-9a244444042a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
               alt="Third slide"
             />
