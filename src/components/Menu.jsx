@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Carousel, Container, Nav, Navbar, Row } from 'react-bootstrap'
+import { Carousel, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Menu = () => {
