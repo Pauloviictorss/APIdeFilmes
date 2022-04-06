@@ -5,7 +5,9 @@ import { Container } from 'react-bootstrap';
 import Carros from './pages/Carros';
 import Objeto from './pages/Objeto';
 import Array from './pages/Array';
+import Contador from './pages/Contador';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import FilmesPopulares from './pages/filmes/FilmesPopulares';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <Route path="/carros" element={<Carros/>} />
             <Route path="/array" element={<Array/>} />
             <Route path="/objeto" element={<Objeto/>} />
+            <Route path="/contador" element={<Contador/>} />
+            <Route path="/filmespopulares" element={<FilmesPopulares/>} />
           </Routes>
         </Container>
 
