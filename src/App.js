@@ -8,6 +8,7 @@ import Array from './pages/Array';
 import Contador from './pages/Contador';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
+import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
             <Route path="/objeto" element={<Objeto/>} />
             <Route path="/contador" element={<Contador/>} />
             <Route path="/filmespopulares" element={<FilmesPopulares/>} />
+            <Route path="/filmes/detalhes" element={<FilmesDetalhes/>}/>
+            <Route path="/filmes/:id" element={<FilmesDetalhes/>}/>
           </Routes>
         </Container>
 

@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Carousel, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import apiFilmes from '../services/apiFilmes'
+
+
+
 
 const Menu = () => {
+const [filmes, setFilmes] = useState([])
+
+useEffect(()=>{
+    
+    const promessa = apiFilmes.get('movie/popular?language=pt-BR')
+
+    promessa.then(resultado=>{
+
+        setFilmes(resultado.data.results)
+    })
+
+}, [])
+
   return (
     <div>
       
@@ -17,43 +34,13 @@ const Menu = () => {
             <Link className="nav-link" to="/objeto">Lugares</Link>
             <Link className="nav-link" to="/contador">Contador</Link>
             <Link className="nav-link" to="/filmespopulares">Filmes Populares</Link>
+            <Link className="nav-link" to="/filmesdetalhes">Detalhes Cinematográficos</Link>
 
           </Nav>
           </Container>
         </Navbar>
 
         <br />
-
-        <Container className="justify-content-center" style={{  }}>
-        <Carousel variant="white">
-          <Carousel.Item>
-            <img style={{ width: '100%' }}
-              className="d-block w-100"
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h5>First slide label</h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img style={{ width: '100%' }}
-              className="d-block w-100"
-              src="https://images.unsplash.com/photo-1564865878688-9a244444042a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <h5>Third slide label</h5>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-
-        <br />
-
-
-        </Container>
 
     </div>
   )
