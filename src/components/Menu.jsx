@@ -7,18 +7,7 @@ import apiFilmes from '../services/apiFilmes'
 
 
 const Menu = () => {
-const [filmes, setFilmes] = useState([])
 
-useEffect(()=>{
-    
-    const promessa = apiFilmes.get('movie/popular?language=pt-BR')
-
-    promessa.then(resultado=>{
-
-        setFilmes(resultado.data.results)
-    })
-
-}, [])
 
   return (
     <div>
@@ -35,6 +24,7 @@ useEffect(()=>{
             <Link className="nav-link" to="/contador">Contador</Link>
             <Link className="nav-link" to="/filmespopulares">Filmes Populares</Link>
             <Link className="nav-link" to="/filmesdetalhes">Detalhes Cinematográficos</Link>
+            <Link className="nav-link" to="/filmeslancamento">Lançamentos</Link>
 
           </Nav>
           </Container>

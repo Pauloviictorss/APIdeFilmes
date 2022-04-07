@@ -9,7 +9,7 @@ import Contador from './pages/Contador';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
-
+import FilmesLancamento from './pages/filmes/FilmesLancamento';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Route path="/filmespopulares" element={<FilmesPopulares/>} />
             <Route path="/filmes/detalhes" element={<FilmesDetalhes/>}/>
             <Route path="/filmes/:id" element={<FilmesDetalhes/>}/>
+            <Route path="/filmeslancamento" element={<FilmesLancamento/>}/>
           </Routes>
         </Container>
 

@@ -6,17 +6,17 @@ import { Link } from 'react-router-dom'
 import Carrossel from '../../components/Carrossel'
 import apiFilmes from '../../services/apiFilmes'
 
-const FilmesPopulares = () => {
+const FilmesLancamento = () => {
 
-const [filmes, setFilmes] = useState([])
+const [film, setFilm] = useState([])
 
 useEffect(()=>{
     
-    const promessa = apiFilmes.get('movie/popular?language=pt-BR')
+    const promessa = apiFilmes.get('movie/now_playing')
 
-    promessa.then(resultado=>{
-
-        setFilmes(resultado.data.results)
+    promessa.then(result=>{
+        console.log(result.data)
+        setFilm(result.data.results)
     })
 
 
@@ -33,7 +33,7 @@ useEffect(()=>{
       </Card>
         
         <Row xs={1} md={2} xl={3} className="g-4">
-          {filmes.map(item => (
+          {film.map(item => (
             <Col>
               <Card style={{ width: '340px', height: '768px' }}>
                 <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500/"+item.poster_path}/>
@@ -54,4 +54,4 @@ useEffect(()=>{
   )
 }
 
-export default FilmesPopulares
+export default FilmesLancamento
