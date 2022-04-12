@@ -14,7 +14,7 @@ const Menu = () => {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-          <Navbar.Brand href="/filmeslancamento">VictFlix</Navbar.Brand>
+          <Navbar.Brand href="/filmespopulares">VictFlix</Navbar.Brand>
           <Nav className="me-auto">
 
             <Link className="mx-2 nav-link btn btn-danger text-light" to="/filmespopulares">Filmes Populares</Link>
