@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Carousel, Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import apiFilmes from '../services/apiFilmes'
 
 
 
@@ -15,16 +14,12 @@ const Menu = () => {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-          <Navbar.Brand href="/objeto">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/filmeslancamento">VictFlix</Navbar.Brand>
           <Nav className="me-auto">
 
-            <Link className="nav-link" to="/carros">Carros</Link>
-            <Link className="nav-link" to="/array">Array</Link>
-            <Link className="nav-link" to="/objeto">Lugares</Link>
-            <Link className="nav-link" to="/contador">Contador</Link>
-            <Link className="nav-link" to="/filmespopulares">Filmes Populares</Link>
-            <Link className="nav-link" to="/filmesdetalhes">Detalhes Cinematográficos</Link>
-            <Link className="nav-link" to="/filmeslancamento">Lançamentos</Link>
+            <Link className="mx-2 nav-link btn btn-danger text-light" to="/filmespopulares">Filmes Populares</Link>
+            <Link className="mx-2 nav-link btn btn-danger text-light" to="/filmeslancamento">Lançamentos</Link>
+            <Link className="mx-2 nav-link btn btn-danger text-light" to="/filmescartaz">Em cartaz</Link>
 
           </Nav>
           </Container>

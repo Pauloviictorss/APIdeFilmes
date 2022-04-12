@@ -5,13 +5,13 @@ import { Card, Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiFilmes from '../../services/apiFilmes'
 
-const FilmesPopulares = () => {
+const FilmesCartaz = () => {
 
 const [filmes, setFilmes] = useState([])
 
 useEffect(()=>{
     
-    const promessa = apiFilmes.get('movie/popular?language=pt-BR')
+    const promessa = apiFilmes.get('movie/now_playing?language=pt-BR')
 
     promessa.then(resultado=>{
 
@@ -27,7 +27,7 @@ useEffect(()=>{
 
       <Card className="p-3 mb-5 align-items-center bg-dark btn text-light" style={{ alignItems: 'auto'}}>
         <h1>
-            Filmes Populares
+            Em cartaz
         </h1>      
       </Card>
         
@@ -53,4 +53,4 @@ useEffect(()=>{
   )
 }
 
-export default FilmesPopulares
+export default FilmesCartaz

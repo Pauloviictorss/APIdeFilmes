@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Card, Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Carrossel from '../../components/Carrossel'
 import apiFilmes from '../../services/apiFilmes'
 
 const FilmesLancamento = () => {
@@ -12,7 +11,7 @@ const [film, setFilm] = useState([])
 
 useEffect(()=>{
     
-    const promessa = apiFilmes.get('movie/now_playing')
+    const promessa = apiFilmes.get('movie/upcoming')
 
     promessa.then(result=>{
         console.log(result.data)
@@ -28,7 +27,7 @@ useEffect(()=>{
 
       <Card className="p-3 mb-5 align-items-center bg-dark btn text-light" style={{ alignItems: 'auto'}}>
         <h1>
-            Filmes Populares
+            Próximos Lançamentos
         </h1>      
       </Card>
         
