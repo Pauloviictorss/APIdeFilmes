@@ -1,13 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Card, Button, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiFilmes from '../../services/apiFilmes'
 
 const FilmesLancamento = () => {
 
-const [film, setFilm] = useState([])
+const [filmes, setFilmes] = useState([])
 
 useEffect(()=>{
     
@@ -15,7 +15,7 @@ useEffect(()=>{
 
     promessa.then(result=>{
         console.log(result.data)
-        setFilm(result.data.results)
+        setFilmes(result.data.results)
     })
 
 
@@ -24,7 +24,8 @@ useEffect(()=>{
 
   return (
     <div>
-
+      
+      {!filmes.length && <h1>Carregando...</h1>}
       <Card className="p-3 mb-5 align-items-center bg-dark btn text-light" style={{ alignItems: 'auto'}}>
         <h1>
             Próximos Lançamentos
@@ -32,8 +33,8 @@ useEffect(()=>{
       </Card>
         
         <Row xs={1} md={2} xl={3} className="g-4">
-          {film.map(item => (
-            <Col>
+          {filmes.map(item => (
+            <Col key={item.id}>
               <Card style={{ width: '340px', height: '768px' }}>
                 <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500/"+item.poster_path}/>
                 <Card.Body>

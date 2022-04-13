@@ -5,7 +5,7 @@ import apiFilmes from '../../services/apiFilmes'
 
 const FilmesDetalhes = () => {
 
-    const [filme, setFilme] = useState({})
+    const [filmes, setFilmes] = useState({})
 
     useEffect(()=>{
     
@@ -15,7 +15,7 @@ const FilmesDetalhes = () => {
 
         promessa.then(resultado=>{
             console.log(resultado.data);
-            setFilme(resultado.data);
+            setFilmes(resultado.data);
         })
     
     
@@ -26,20 +26,22 @@ const FilmesDetalhes = () => {
 
     return (
     <div>
+        {!filmes.id && <h1>Carregando...</h1>}
+
         <Row xs={1} sm={1} md={1} lg={2} xl={2} className="g-4">
             <Col>
                 <Card border="light" style={{ width: '25rem' }}>
                     <Card className="bg-dark mb-2" style={{ width: '25rem' }}>
                         <Card.Body>
                             <Card className="p-2 mb-2 btn text-dark bg-light">
-                                <h1>{filme.title}</h1>
+                                <h1>{filmes.title}</h1>
                             </Card>
-                            <Card.Img className="mb-2 mt-3" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filme.poster_path}/>
+                            <Card.Img className="mb-2 mt-3" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filmes.poster_path}/>
                             
                         </Card.Body>
                     </Card>
                     <Card className="p-2 btn btn-light text-light bg-danger">
-                        <Button variant='danger' target="_blank" href={filme.homepage}><h5>Site Oficial</h5></Button>
+                        <Button variant='danger' target="_blank" href={filmes.homepage}><h5>Site Oficial</h5></Button>
                     </Card>
                 </Card>
             </Col>
@@ -50,12 +52,12 @@ const FilmesDetalhes = () => {
                 <Card className="bg-dark text-light" style={{ width: '25rem' }}>
                     <Card.Body>
 
-                        <Card.Img className="mb-4 mt-2" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filme.backdrop_path}/>
+                        <Card.Img className="mb-4 mt-2" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filmes.backdrop_path}/>
                         <Card border="light" className="bg-dark">
                             <Card.Title className="btn btn-light">
                                 Sinopse:
                             </Card.Title>
-                            <p className="p-2">{filme.overview}</p>
+                            <p className="p-2">{filmes.overview}</p>
                         </Card>
 
                         <Row xs={1} md={2} xl={2}>
@@ -64,7 +66,7 @@ const FilmesDetalhes = () => {
                                     <Card.Title className="btn btn-light">
                                         Data de lançamento:
                                     </Card.Title>
-                                    <p className="p-2">{filme.release_date}</p>
+                                    <p className="p-2">{filmes.release_date}</p>
                                 </Card>
                             </Col>
                             <Col>
@@ -72,7 +74,17 @@ const FilmesDetalhes = () => {
                                     <Card.Title className="btn btn-light">
                                         Nota de avaliação média:
                                     </Card.Title>
-                                    <p className="p-2">{filme.vote_average}</p>
+                                    <p className="p-2">{filmes.vote_average}</p>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card border="light" className="bg-dark mt-4">
+                                    <Card.Title className="btn btn-light">
+                                        Nota de avaliação média:
+                                    </Card.Title>
+                                    {filmes.genres.map(item => (
+                                    <p className="p-1 text-light">{item.name}</p>    
+                                    ))}
                                 </Card>
                             </Col>
                         </Row>
@@ -82,7 +94,7 @@ const FilmesDetalhes = () => {
                 </Card>
 
                 <Card className="mt-2">
-                    <Link className="btn btn-danger" to={"../filmespopulares"}>Voltar para a página principal</Link>
+                    <Link className="btn btn-danger" to={-1}>Voltar</Link>
                 </Card>
 
                 </Card>
