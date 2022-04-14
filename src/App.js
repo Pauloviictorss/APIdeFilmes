@@ -11,6 +11,7 @@ import FilmesPopulares from './pages/filmes/FilmesPopulares';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
 import FilmesLancamento from './pages/filmes/FilmesLancamento';
 import FilmesCartaz from './pages/filmes/FilmesCartaz';
+import AtoresDetalhes from './pages/atores/AtoresDetalhes';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/filmes/:id" element={<FilmesDetalhes/>}/>
             <Route path="/filmeslancamento" element={<FilmesLancamento/>}/>
             <Route path="/filmescartaz" element={<FilmesCartaz/>}/>
+            <Route path="/atores/id:" element={<AtoresDetalhes/>}/>
           </Routes>
         </Container>
 

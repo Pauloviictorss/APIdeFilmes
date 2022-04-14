@@ -134,8 +134,10 @@ const FilmesDetalhes = () => {
                             {atores.map(item => (
                                 <Col md={3} key={item.id} className="mb-3">
                                     <p>{item.name}</p>
+                                    
+                              
                                     <Card.Img style={{width: '250px'}} className="p-2" variant="top" src={"https://image.tmdb.org/t/p/w500/"+ item.profile_path}/>
- 
+                               
                                 </Col>
                                           
                             ))}
