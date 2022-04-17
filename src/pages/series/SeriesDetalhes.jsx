@@ -3,29 +3,29 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import apiFilmes from '../../services/apiFilmes'
 
-const FilmesDetalhes = () => {
+const SeriesDetalhes = () => {
 
-    const [filme, setFilme] = useState({})
-    const [atores, setAtores] = useState([])
+    const [serie, setSerie] = useState({})
+    const [seasons, setSeasons] = useState([])
 
     useEffect(()=>{
     
-        const promessa = apiFilmes.get('movie/' + params.id + '?language=pt-BR')
+        const promessa = apiFilmes.get('tv/' + params.id + '?language=pt-BR')
         
         promessa.then(resultado=>{
-            console.log(resultado.data);
-            setFilme(resultado.data);
+            console.log(resultado.data.seasons);
+            setSerie(resultado.data);
         })
     
     }, [])
 
     useEffect(()=>{
     
-        const promessa = apiFilmes.get('movie/' + params.id + '/credits?language=pt-BR')
+        const promessa = apiFilmes.get('tv/' + params.id + '?language=pt-BR')
         
         promessa.then(resultado=>{
-            console.log(resultado.data.cast);
-            setAtores(resultado.data.cast);
+            console.log(resultado.data.seasons);
+            setSeasons(resultado.data.seasons);
         })
     
     }, [])
@@ -35,23 +35,23 @@ const FilmesDetalhes = () => {
 
     return (
     <div>
-        {!filme.id && <h1>Carregando...</h1>}
+        {!serie.id && <h1>Carregando...</h1>}
 
-        {filme.id && 
+        {serie.id && 
         <Row xs={1} sm={1} md={1} lg={2} xl={2} className="g-4">
             <Col>
                 <Card border="light" style={{ width: '25rem' }}>
                     <Card className="bg-dark mb-2" style={{ width: '25rem' }}>
                         <Card.Body>
                             <Card className="p-2 mb-2 btn text-dark bg-light">
-                                <h1>{filme.title}</h1>
+                                <h1>{serie.title}</h1>
                             </Card>
-                            <Card.Img className="mb-2 mt-3" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filme.poster_path}/>
+                            <Card.Img className="mb-2 mt-3" variant="top" src={"https://image.tmdb.org/t/p/w500/"+serie.poster_path}/>
                             
                         </Card.Body>
                     </Card>
                     <Card className="p-2 btn btn-light text-light bg-danger">
-                        <Button variant='danger' target="_blank" href={filme.homepage}><h5>Site Oficial</h5></Button>
+                        <Button variant='danger' target="_blank" href={serie.homepage}><h5>Site Oficial</h5></Button>
                     </Card>
                 </Card>
             </Col>
@@ -62,12 +62,12 @@ const FilmesDetalhes = () => {
                 <Card className="bg-dark text-light" style={{ width: '25rem' }}>
                     <Card.Body>
 
-                        <Card.Img className="mb-4 mt-2" variant="top" src={"https://image.tmdb.org/t/p/w500/"+filme.backdrop_path}/>
+                        <Card.Img className="mb-4 mt-2" variant="top" src={"https://image.tmdb.org/t/p/w500/"+serie.backdrop_path}/>
                         <Card border="light" className="bg-dark">
                             <Card.Title className="btn btn-light">
                                 Sinopse:
                             </Card.Title>
-                            <p className="p-2">{filme.overview}</p>
+                            <p className="p-2">{serie.overview}</p>
                         </Card>
 
                         <Row xs={1} md={2} xl={2}>
@@ -76,7 +76,7 @@ const FilmesDetalhes = () => {
                                     <Card.Title style={{width: '100%'}} className="btn btn-light">
                                         Data de lançamento:
                                     </Card.Title>
-                                    <p className="p-2">{filme.release_date}</p>
+                                    <p className="p-2">{serie.first_air_date}</p>
                                 </Card>
                             </Col>
                             <Col>
@@ -84,7 +84,7 @@ const FilmesDetalhes = () => {
                                     <Card.Title style={{width: '100%'}} className="btn btn-light">
                                         Nota de avaliação média:
                                     </Card.Title>
-                                    <p className="p-2">{filme.vote_average}</p>
+                                    <p className="p-2">{serie.vote_average}</p>
                                 </Card>
                             </Col>
                             <Col style={{width: '100%'}}>
@@ -92,9 +92,25 @@ const FilmesDetalhes = () => {
                                     <Card.Title className="btn btn-light w-100">
                                         Gêneros:
                                     </Card.Title>
-                                    {filme.genres.map(item => (
+                                    {serie.genres.map(item => (
                                     <p className="px-2 text-light">{item.name}</p>    
                                     ))}
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card border="light" className="bg-dark mt-4 align-items-center">
+                                    <Card.Title style={{width: '100%'}} className="btn btn-light">
+                                        Número de Episódios:
+                                    </Card.Title>
+                                    <p className="p-2">{serie.number_of_episodes}</p>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card border="light" className="bg-dark mt-4 align-items-center">
+                                    <Card.Title style={{width: '100%'}} className="btn btn-light">
+                                        Quantidade de Temporadas:
+                                    </Card.Title>
+                                    <p className="p-2">{serie.number_of_seasons}</p>
                                 </Card>
                             </Col>
                             <Col>
@@ -119,27 +135,28 @@ const FilmesDetalhes = () => {
                 <Col md={12}>
                     <Card>
                         <Card className="p-2 mx-2 my-2 btn text-dark bg-light">
-                            <h1>Elenco</h1>
+                            <h1>Seasons</h1>
                         </Card>
-                            <Row>
-                            {atores.map(item => (
-                                <Col md={3} key={item.id} className="mb-3">
-
-                                        <Card className='p-2 mx-2 my-2'>
-                                            <Link to={"/atores/" + item.id}>
-                                                <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500/"+ item.profile_path}/>
-                                            </Link>
-                                            <Card className="mt-2 align-items-center bg-dark text-light">
-                                                <Link className="btn text-light" to={"/atores/" + item.id}><h6>{item.name}</h6></Link>
-                                            </Card>
-                                        </Card>
-                                    
-                                </Col>
-                                          
-                            ))}
-                            </Row>
-                      
+                            <div>                                
+                                <Row xs={1} md={2} xl={3} className="g-4">
+                                {seasons.map(item => (
+                                    <Col key={item.id}>
+                                    <Card style={{ width: '340px', height: '700px' }}>
+                                        <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500/"+item.poster_path}/>
+                                        <Card.Body>
+                                        <Card.Title><h4>{item.name}</h4></Card.Title>
+                                        <p>{item.overview.substring(0,100) + "..."}</p>
+                                        <h5>Data de Lançamento: {item.air_date}</h5>
+                                        </Card.Body>
+                                    </Card>
+                                    </Col>
+                                ))}
+                                </Row>
+                            </div>
                     </Card>
+
+                    
+
                 </Col>
             </Row>
 
@@ -147,9 +164,11 @@ const FilmesDetalhes = () => {
 
 
         </Row>  
-        }      
+        
+        }  
+    
     </div>
   )
 }
 
-export default FilmesDetalhes
+export default SeriesDetalhes
