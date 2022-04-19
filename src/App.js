@@ -24,7 +24,7 @@ function App() {
       <BrowserRouter>
         <Menu/>
 
-        <Container>    
+        <Container>
           <Routes>
             <Route path="/" element={<FilmesPopulares/>} />
             <Route path="/carros" element={<Carros/>} />
